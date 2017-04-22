@@ -3,7 +3,7 @@
  */
 'use strict';
 let couchbase = require('couchbase');
-let config = require('./dbConfig.json');
+let config = require('./config.json');
 let dbConnection = (new couchbase.Cluster(config.couchbase.url))
   .openBucket(config.couchbase.bucketName, null, () => {
     console.log('Connected to localhost:8091');

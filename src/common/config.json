@@ -1,0 +1,10 @@
+{
+  "server": {
+    "url": "http://localhost",
+    "port": 9003
+  },
+  "couchbase": {
+    "bucketName": "bakeryDb",
+    "url": "http://127.0.0.1:8091"
+  }
+}
