@@ -2,9 +2,9 @@
 
 import cors from 'cors';
 import express from 'express';
-
-import config from './src/common/config.json';
-import dbUtil from './src/common/dbUtil';
+import bodyParser from 'body-parser';
+import config from './common/config.json';
+import dbUtil from './common/db-util';
 
 let app = express();
 app.use(function (req, res, next) {
@@ -21,6 +21,7 @@ app.get('/', (request, response) => {
   });
 });
 app.use(cors());
+app.use(bodyParser());
 app.listen(config.server.port, () => {
   console.log('Started server on '+config.server.port);
 });

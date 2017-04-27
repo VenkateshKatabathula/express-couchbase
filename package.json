@@ -4,7 +4,7 @@
   "description": "Sample Express js app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js --exec babel-node",
+    "start": "nodemon src\\app.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -5,6 +5,6 @@
   },
   "couchbase": {
     "bucketName": "bakeryDb",
-    "url": "http://127.0.0.1:8091"
+    "url": "couchbase://127.0.0.1"
   }
 }
