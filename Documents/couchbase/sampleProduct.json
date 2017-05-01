@@ -1,0 +1,23 @@
+{
+  "name": "Fruit & nut",
+  "Ingredients": [
+    "Fresh Dry Fruits and Nuts",
+    "ButterScotch",
+    "Lightly Salted Butter Softened",
+    "Caster Sugar ",
+    "Ground Cinnamon",
+    "Moroccan Almond Extract",
+    "Plain Flour",
+    "Ground Almonds",
+    "Glacé Cherries",
+    "Mixed Dried Fruit",
+    "Flaked Almonds"
+  ],
+  "availableSizes": [
+    2,
+    3,
+    5
+  ],
+  "measure": "kg",
+  "product_id": "buu:bakery:product:id:0512"
+}
