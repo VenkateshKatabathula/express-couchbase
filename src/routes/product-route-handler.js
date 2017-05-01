@@ -1,30 +1,38 @@
 import express from 'express';
+import { N1qlQuery }from 'couchbase';
 
 import dbUtil from './../common/db-util';
 import logger from './../common/logger';
+import { couchbase } from './../common/config.json';
 
 let router = express.Router();
-router.get('/', (request, response, next) => {
-  logger.log("Received request to get all products :: ");
-  let queryString = "Select * from bakery-db where product_id like buu:bakery:product:id%";
-  dbUtil.queryDb(queryString)
+let bucket = `${couchbase.bucketName}`;
+router.get('/', (request, response) => {
+  logger.debug('Received request to get all products :: ' + request.originalUrl);
+  let queryString = 'Select * from ' + bucket + ' where product_id like \'buu:bakery:product:id%\'';
+  logger.info('query fired :: ' + queryString);
+  dbUtil.queryDb(N1qlQuery.fromString(queryString))
     .then(dbResponse => {
-      response = {
-        data: dbResponse.data,
+      // logger.info('dbResponse ::: ' + JSON.stringify(dbResponse));
+      response.json({
+        data: dbResponse,
         success: true
-      };
-      next();
+      });
+      // logger.info('Response:: ' + JSON.stringify(response));
     })
     .catch(error => {
-      response = {
+      logger.debug('Error :: ' + error);
+      response.json({
         success: false,
         message: error
-      }
+      });
+
     });
-  logger.log(response);
+  // logger.debug(response);
 });
 
 router.post('/products', (request, response) => {
-  logger.log("response :: " + response);
+  response = {success: true};
+  logger.debug('response :: ' + response);
 });
 export default router;

@@ -7,7 +7,7 @@ class dbUtil {
     return new Promise((resolve, reject) => {
       dbConnection.get(documentName, (error, data) => {
         if (error) {
-          logger.console.error('Error loading Data :: ' + error);
+          logger.error('Error loading Data :: ' + error);
           reject(error);
         } else {
           resolve(data);
@@ -15,11 +15,12 @@ class dbUtil {
       });
     });
   }
-  static queryDb(queryString){
-    return new Promise((resolve,reject) =>{
-      dbConnection.query(queryString, (error, data)=>{
-        if(error) {
-          logger.error("Error fetching data from db ::: "+error);
+
+  static queryDb (queryString) {
+    return new Promise((resolve, reject) => {
+      dbConnection.query(queryString, (error, data) => {
+        if (error) {
+          logger.error('Error fetching data from db ::: ' + error);
           reject(error);
         }
         else {
@@ -30,4 +31,4 @@ class dbUtil {
   }
 }
 
-module.exports = dbUtil;
+export default dbUtil;
