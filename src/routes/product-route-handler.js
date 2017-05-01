@@ -13,12 +13,10 @@ router.get('/', (request, response) => {
   logger.info('query fired :: ' + queryString);
   dbUtil.queryDb(N1qlQuery.fromString(queryString))
     .then(dbResponse => {
-      // logger.info('dbResponse ::: ' + JSON.stringify(dbResponse));
       response.json({
         data: dbResponse,
         success: true
       });
-      // logger.info('Response:: ' + JSON.stringify(response));
     })
     .catch(error => {
       logger.debug('Error :: ' + error);
@@ -26,9 +24,7 @@ router.get('/', (request, response) => {
         success: false,
         message: error
       });
-
     });
-  // logger.debug(response);
 });
 
 router.post('/products', (request, response) => {

@@ -8,31 +8,25 @@ import logger from './common/logger';
 import routeConfig from './routes/router-config';
 
 let app = express();
-// Setting up the default headers which we receive when a request comes from a browser
+
+// Using body-parser for evaluating json requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+// Setting up the default headers which we receive when a request comes from a browser
 app.use(function (req, res, next) {
-  logger.debug("Received Request"+req.originalUrl);
+  logger.debug('Received Request' + req.originalUrl);
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 // Enabling cors for above headers
 app.use(cors());
-// Using body-parser for evaluating json requests
 
-
-app.use('/', (request, response,next) => {
-  // let getData = dbUtil.getData('buu:bakery:product:id:0512');
-  // getData.then((success) => {
-  //     response.end(JSON.stringify(success.value));
-  //   })
-  //   .catch(error => {
-  //     logger.debug('Caught Error :: ' + error);
-  //   });
-  logger.debug("Received Request on :: "+request.originalUrl);
+app.use('/', (request, response, next) => {
+  logger.debug('Received Request on :: ' + request.originalUrl);
   next();
 });
 
